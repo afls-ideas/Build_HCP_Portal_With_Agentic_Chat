@@ -4,6 +4,8 @@ An HCP (healthcare professional) logs in to the **HCP Portal** Experience Cloud 
 and gets an answer taken from the slide text. When the HCP says yes, the agent shows the slide as an inline LWC card in the chat
 (`hcpSlideCard`). It is the `Content_Search_AgentForce` pattern moved to a portal for external users.
 
+![HCP Portal home page with the HCP Knowledge Agent chat showing an inline slide card](docs/images/portal-chat.png)
+
 - Org: `YOUR_ORG_ALIAS` (`YOUR_ADMIN_USERNAME`), API version 68.0
 - Primary site (LWR): `https://YOUR_MYDOMAIN.my.site.com/hcpportalvforcesite/`
 - Test portal user: a user on the HCP User profile with permission set `HCP_Portal_Access`. Credentials are not stored in this repo.

@@ -59,5 +59,3 @@ through the `enhancedWebChat` renderer. The routing flow uses `routingType=Copil
 ## Status
 - Verified: on the LWR site as the test portal user the chat opens, the agent answers and, after "yes", the slide card with thumbnail renders inline.
 - Not yet verified: tile thumbnails after the redesign (the `*.file.force.com` image host may need a CSP trusted site), `run_agent_tests.py`.
-- Known issue: Aura `/HCP` chat widget does not render (cause unknown).
-- Side effects to remember: the test user lost `/b2benhanced` access when switched to the HCP User profile; the shared agent user got extra permissions; the five thumbnail links are public.
