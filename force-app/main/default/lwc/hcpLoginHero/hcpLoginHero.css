@@ -1,0 +1,29 @@
+:host {
+    --teal: #19b6a6;
+    display: block;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+.hero {
+    display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+    padding: 56px 40px 96px; color: #fff; background-size: cover; background-position: center;
+}
+.brand { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+.mark { width: 44px; height: 44px; border-radius: 11px; object-fit: cover; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35); }
+.brand-name { font-weight: 700; font-size: 1.2rem; letter-spacing: 0.2px; }
+.brand-sub { font-weight: 500; color: #cdd9ea; margin-left: 4px; }
+.eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.78rem; color: #8be3da; margin: 0 0 14px; font-weight: 600; }
+h1 { font-size: clamp(1.9rem, 3.6vw, 3rem); line-height: 1.1; margin: 0 0 18px; font-weight: 800; }
+.accent { background: linear-gradient(90deg, #8be3da, #5bd1ff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.lede { font-size: 1.08rem; line-height: 1.6; color: #cdd9ea; max-width: 540px; margin: 0; }
+
+.hero-visual { position: relative; height: 340px; max-width: 320px; justify-self: center; width: 100%; }
+.doctor {
+    position: absolute; inset: 0; border-radius: 28px; background-size: cover; background-position: center top;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45); border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+@media (max-width: 800px) {
+    .hero { grid-template-columns: 1fr; padding: 36px 24px 56px; }
+    .hero-visual { display: none; }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinition xmlns="http://soap.sforce.com/2006/04/metadata">
+    <agentDSLEnabled>true</agentDSLEnabled>
+    <agentDescription>Service agent for the HCP portal that answers Immunexis questions from approved presentation slides and shows the matching slide inline</agentDescription>
+    <agentType>EinsteinServiceAgent</agentType>
+    <botUser>YOUR_AGENT_USER@example.com</botUser>
+    <logPrivateConversationData>false</logPrivateConversationData>
+    <richContentEnabled>true</richContentEnabled>
+    <type>ExternalCopilot</type>
+</AiAgentDefinition>

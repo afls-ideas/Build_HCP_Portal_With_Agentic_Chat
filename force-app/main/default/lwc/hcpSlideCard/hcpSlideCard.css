@@ -1,0 +1,41 @@
+.slide-card {
+    border: 1px solid #dddbda;
+    border-radius: 0.5rem;
+    background: #fff;
+    overflow: hidden;
+    max-width: 28rem;
+}
+
+.thumbnail {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 16rem;
+    object-fit: contain;
+    background: #f3f3f3;
+}
+
+.thumbnail-placeholder,
+.no-data {
+    padding: 2rem 1rem;
+    text-align: center;
+    color: #706e6b;
+    background: #f3f3f3;
+}
+
+.meta {
+    padding: 0.75rem 1rem;
+}
+
+.slide-name {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #181818;
+}
+
+.slide-sub {
+    margin: 0.25rem 0 0;
+    font-size: 0.8125rem;
+    color: #444;
+}

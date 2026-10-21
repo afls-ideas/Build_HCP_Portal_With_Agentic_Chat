@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MessagingChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>en_US</language>
+        <response>You&apos;ve opted out of receiving messages from us, so we won&apos;t contact you again.</response>
+        <type>OptOutConfirmation</type>
+    </automatedResponses>
+    <automatedResponses>
+        <autoResponseContentType>TextResponse</autoResponseContentType>
+        <language>en_US</language>
+        <response>Text STOP to opt out of further messages.</response>
+        <type>HelpResponse</type>
+    </automatedResponses>
+    <isEndUserDataCaptured>false</isEndUserDataCaptured>
+    <isEstimatedWaitTimeEnabled>false</isEstimatedWaitTimeEnabled>
+    <isFeedbackEnabled>false</isFeedbackEnabled>
+    <isQueuePositionEnabled>false</isQueuePositionEnabled>
+    <isSynchronousChatEnabled>false</isSynchronousChatEnabled>
+    <isVoiceModeEnabled>false</isVoiceModeEnabled>
+    <masterLabel>HCP Portal Messaging</masterLabel>
+    <messagingChannelType>EmbeddedMessaging</messagingChannelType>
+    <messagingKeywords>
+        <keyword>cancel</keyword>
+        <keyword>end</keyword>
+        <keyword>quit</keyword>
+        <keyword>stop</keyword>
+        <keyword>stopall</keyword>
+        <keyword>unsubscribe</keyword>
+        <keywordType>OptOut</keywordType>
+        <language>en_US</language>
+    </messagingKeywords>
+    <messagingKeywords>
+        <keyword>help</keyword>
+        <keywordType>Help</keywordType>
+        <language>en_US</language>
+    </messagingKeywords>
+    <sessionHandlerFlow>HCP_Portal_Route_to_Agent</sessionHandlerFlow>
+    <sessionHandlerQueue>SDO_Service_Messaging</sessionHandlerQueue>
+    <sessionHandlerType>Flow</sessionHandlerType>
+    <standardParameters>
+        <actionParameterMappings>
+            <actionParameterName>email</actionParameterName>
+        </actionParameterMappings>
+        <parameterType>Email</parameterType>
+    </standardParameters>
+    <standardParameters>
+        <actionParameterMappings>
+            <actionParameterName>subject</actionParameterName>
+        </actionParameterMappings>
+        <parameterType>Subject</parameterType>
+    </standardParameters>
+    <standardParameters>
+        <actionParameterMappings>
+            <actionParameterName>lastName</actionParameterName>
+        </actionParameterMappings>
+        <parameterType>LastName</parameterType>
+    </standardParameters>
+    <standardParameters>
+        <actionParameterMappings>
+            <actionParameterName>firstName</actionParameterName>
+        </actionParameterMappings>
+        <parameterType>FirstName</parameterType>
+    </standardParameters>
+</MessagingChannel>

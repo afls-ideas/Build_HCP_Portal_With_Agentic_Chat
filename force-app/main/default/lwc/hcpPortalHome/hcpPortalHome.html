@@ -1,0 +1,77 @@
+<template>
+    <div class="portal">
+        <header class="nav">
+            <div class="brand">
+                <img class="mark" src={logo} alt="Immunexis" />
+                <span class="brand-name">Immunexis <span class="brand-sub">HCP Portal</span></span>
+            </div>
+            <nav class="links" aria-label="Primary">
+                <a href="#topics">Product Information</a>
+                <a href="#assistant">Ask the Agent</a>
+                <a href="#support">Support</a>
+            </nav>
+            <div class="account">
+                <span class="hello">{greeting}</span>
+                <a class="logout" href={logoutUrl}>Log out</a>
+            </div>
+        </header>
+
+        <section class="hero" style={heroStyle}>
+            <div class="hero-copy">
+                <p class="eyebrow">For healthcare professionals</p>
+                <h1>Answers on Immunexis, <span class="accent">on the slide</span>.</h1>
+                <p class="lede">Ask a clinical or dosing question and get the answer straight from the approved presentation, with the slide shown right in the conversation.</p>
+                <div class="cta-row">
+                    <button class="btn primary" type="button" onclick={openChat}>Ask the HCP Knowledge Agent</button>
+                    <a class="btn ghost" href="#topics">Browse topics</a>
+                </div>
+                <p class="hint" if:true={helpMessage}>{helpMessage}</p>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="doctor" style={doctorStyle}></div>
+                <div class="chat-bubble user">Where should I administer the drug?</div>
+                <div class="chat-bubble agent">According to the Dosing &amp; Administration slide, sites are the upper arm, thigh, or abdomen.</div>
+            </div>
+        </section>
+
+        <section class="stats" aria-label="Highlights">
+            <div class="stat"><strong>5</strong><span>Approved slide topics</span></div>
+            <div class="stat"><strong>Instant</strong><span>Answers from slide text</span></div>
+            <div class="stat"><strong>Inline</strong><span>Slides shown in chat</span></div>
+            <div class="stat"><strong>24/7</strong><span>Available when you are</span></div>
+        </section>
+
+        <section class="topics" id="topics">
+            <h2>Explore Immunexis</h2>
+            <p class="section-sub">Pick a topic to see a suggested question for the agent.</p>
+            <div class="grid">
+                <template for:each={topics} for:item="topic">
+                    <button key={topic.key} class="tile" type="button" data-question={topic.question} onclick={handleTopic}>
+                        <span class="tile-thumb" if:true={topic.hasThumbnail}>
+                            <img src={topic.thumbnailUrl} alt={topic.title} loading="lazy" />
+                        </span>
+                        <span class="tile-icon" if:false={topic.hasThumbnail}>
+                            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={topic.icon}></path></svg>
+                        </span>
+                        <span class="tile-title">{topic.title}</span>
+                        <span class="tile-tag">{topic.tag}</span>
+                        <span class="tile-q">&ldquo;{topic.question}&rdquo;</span>
+                    </button>
+                </template>
+            </div>
+        </section>
+
+        <section class="assistant" id="assistant" style={bandStyle}>
+            <div>
+                <h2>Your product knowledge agent</h2>
+                <p>The HCP Knowledge Agent answers only from the approved Immunexis slides and will show you the slide behind the answer. It does not give personal medical advice. For prescribing information or adverse event reporting, contact Medical Information.</p>
+            </div>
+            <button class="btn primary" type="button" onclick={openChat}>Start a conversation</button>
+        </section>
+
+        <footer class="footer" id="support">
+            <span>&copy; {year} Immunexis HCP Portal. For US healthcare professionals.</span>
+            <span>Please see full Prescribing Information. Report adverse events to Medical Information.</span>
+        </footer>
+    </div>
+</template>

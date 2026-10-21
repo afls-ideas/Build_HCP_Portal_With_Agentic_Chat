@@ -1,0 +1,5 @@
+{
+  "title" : "HCP Slide",
+  "description" : "A product presentation slide (name, deck, slide number, thumbnail) shown inline in the HCP portal chat.",
+  "lightning:type" : "@apexClassType/c__PresentationRecommendationWrapper"
+}

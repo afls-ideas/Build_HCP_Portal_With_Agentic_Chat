@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Messaging routing flow for the HCP portal chat: hands every new conversation to the HCP Knowledge Agent (routingType
+     Copilot). The queue is only the fallback if the agent is unavailable. -->
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Route_to_Agent</name>
+        <label>Route to Agent</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <actionName>routeWork</actionName>
+        <actionType>routeWork</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>recordId</name>
+            <value><elementReference>recordId</elementReference></value>
+        </inputParameters>
+        <inputParameters>
+            <name>serviceChannelLabel</name>
+            <value><stringValue>LiveMessage</stringValue></value>
+        </inputParameters>
+        <inputParameters>
+            <name>serviceChannelDevName</name>
+            <value><stringValue>sfdc_livemessage</stringValue></value>
+        </inputParameters>
+        <inputParameters>
+            <name>serviceChannelId</name>
+            <value>
+                <setupReference>sfdc_livemessage</setupReference>
+                <setupReferenceType>ServiceChannel</setupReferenceType>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>routingType</name>
+            <value><stringValue>Copilot</stringValue></value>
+        </inputParameters>
+        <inputParameters>
+            <name>copilotLabel</name>
+            <value><stringValue>HCP Knowledge Agent</stringValue></value>
+        </inputParameters>
+        <inputParameters>
+            <name>copilotId</name>
+            <value>
+                <setupReference>HCP_Knowledge_Agent</setupReference>
+                <setupReferenceType>BotDefinition</setupReferenceType>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>queueLabel</name>
+            <value><stringValue>SDO Service Messaging</stringValue></value>
+        </inputParameters>
+        <inputParameters>
+            <name>queueId</name>
+            <value><stringValue>YOUR_QUEUE_ID</stringValue></value>
+        </inputParameters>
+        <inputParameters>
+            <name>isQueueVariable</name>
+            <value><booleanValue>false</booleanValue></value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>68.0</apiVersion>
+    <environments>Default</environments>
+    <interviewLabel>HCP Portal Route to Agent {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>HCP Portal Route to Agent</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value><stringValue>LightningFlowBuilder</stringValue></value>
+    </processMetadataValues>
+    <processType>RoutingFlow</processType>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector><targetReference>Route_to_Agent</targetReference></connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AiAgentDefinitionVersion xmlns="http://soap.sforce.com/2006/04/metadata">
+    <articleAnswersGPTEnabled>false</articleAnswersGPTEnabled>
+    <billingMode>ActionBased</billingMode>
+    <citationsEnabled>false</citationsEnabled>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The agent instructions</description>
+        <developerName>AgentScriptInternal_agent_instructions</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Agent Instructions</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>The next topic to be visited</description>
+        <developerName>AgentScriptInternal_next_topic</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Next Topic</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Id of the best matching slide from the most recent search</description>
+        <developerName>first_page_id</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>First Page Id</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Result of the most recent slide search, one slide per line with its Id and text excerpt</description>
+        <developerName>search_results</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Search Results</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <conversationVariables>
+        <dataType>Text</dataType>
+        <description>Summary of the slide shown in the current turn; empty until show_slide has run. Guards against repeated show_slide calls</description>
+        <developerName>slide_summary</developerName>
+        <includeInPrompt>false</includeInPrompt>
+        <label>Slide Summary</label>
+        <visibility>Internal</visibility>
+    </conversationVariables>
+    <copilotPrimaryLanguage>en_US</copilotPrimaryLanguage>
+    <genAiPlannerName>HCP_Knowledge_Agent_v1</genAiPlannerName>
+    <isScriptCompatibleAgent>true</isScriptCompatibleAgent>
+    <knowledgeActionEnabled>false</knowledgeActionEnabled>
+    <knowledgeFallbackEnabled>false</knowledgeFallbackEnabled>
+    <planner>
+        <fullName>HCP_Knowledge_Agent_v1</fullName>
+        <agentGraphRef>YOUR_AGENT_GRAPH_ID</agentGraphRef>
+        <description>Service agent for the HCP portal that answers Immunexis questions from approved presentation slides and shows the matching slide inline</description>
+        <localTopicLinks>
+            <genAiPluginName>agent_router</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>off_topic</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>slide_search</genAiPluginName>
+        </localTopicLinks>
+        <localTopicLinks>
+            <genAiPluginName>slide_viewer</genAiPluginName>
+        </localTopicLinks>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Route the user to the appropriate topic</description>
+            <genAiPluginInstructions>
+                <description>You are the HCP Knowledge Agent, an AI assistant on the healthcare professional (HCP) portal that answers questions about Immunexis using the product&apos;s approved presentation slides.
+You are an AI assistant, not a human.
+Only answer from the slide text returned by the Search Presentation Slides action. Never invent slide names, data or clinical claims.
+You do not give personal medical advice. For patient-specific questions, or anything the slides do not cover, direct the user to the full prescribing information or to Medical Information.</description>
+                <developerName>instruction0_INSTRUCTION_ID_3</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_INSTRUCTION_ID_3</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>agent_router</localDeveloperName>
+            <masterLabel>Agent Router</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Handle requests unrelated to the product or its presentation content</description>
+            <genAiPluginInstructions>
+                <description>You are the HCP Knowledge Agent, an AI assistant on the healthcare professional (HCP) portal that answers questions about Immunexis using the product&apos;s approved presentation slides.
+You are an AI assistant, not a human.
+Only answer from the slide text returned by the Search Presentation Slides action. Never invent slide names, data or clinical claims.
+You do not give personal medical advice. For patient-specific questions, or anything the slides do not cover, direct the user to the full prescribing information or to Medical Information.</description>
+                <developerName>instruction0_INSTRUCTION_ID_1</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_INSTRUCTION_ID_1</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localDeveloperName>off_topic</localDeveloperName>
+            <masterLabel>Off Topic</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Answer a product question from the text of the matching presentation slides</description>
+            <genAiPluginInstructions>
+                <description>You are the HCP Knowledge Agent, an AI assistant on the healthcare professional (HCP) portal that answers questions about Immunexis using the product&apos;s approved presentation slides.
+You are an AI assistant, not a human.
+Only answer from the slide text returned by the Search Presentation Slides action. Never invent slide names, data or clinical claims.
+You do not give personal medical advice. For patient-specific questions, or anything the slides do not cover, direct the user to the full prescribing information or to Medical Information.</description>
+                <developerName>instruction0_INSTRUCTION_ID_4</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_INSTRUCTION_ID_4</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>search_slides</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Searches presentation slide text with hybrid (keyword and semantic) search and returns the best matching slides.</description>
+                <invocationTarget>ContentSearchAction</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>search_slides</localDeveloperName>
+                <masterLabel>Search Presentation Slides</masterLabel>
+                <progressIndicatorMessage>Searching the Immunexis slides...</progressIndicatorMessage>
+            </localActions>
+            <localDeveloperName>slide_search</localDeveloperName>
+            <masterLabel>Slide Search</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <localTopics>
+            <canEscalate>false</canEscalate>
+            <description>Show a slide that was already recommended, with its thumbnail</description>
+            <genAiPluginInstructions>
+                <description>You are the HCP Knowledge Agent, an AI assistant on the healthcare professional (HCP) portal that answers questions about Immunexis using the product&apos;s approved presentation slides.
+You are an AI assistant, not a human.
+Only answer from the slide text returned by the Search Presentation Slides action. Never invent slide names, data or clinical claims.
+You do not give personal medical advice. For patient-specific questions, or anything the slides do not cover, direct the user to the full prescribing information or to Medical Information.</description>
+                <developerName>instruction0_INSTRUCTION_ID_2</developerName>
+                <language>en_US</language>
+                <masterLabel>instruction0_INSTRUCTION_ID_2</masterLabel>
+                <sortOrder>1</sortOrder>
+            </genAiPluginInstructions>
+            <language>en_US</language>
+            <localActionLinks>
+                <functionName>show_slide</functionName>
+            </localActionLinks>
+            <localActions>
+                <description>Shows a presentation slide and its thumbnail image inline in the chat. The output is always renderable; always use show_command to display it to the user.</description>
+                <invocationTarget>HcpShowSlideAction</invocationTarget>
+                <invocationTargetType>apex</invocationTargetType>
+                <isConfirmationRequired>false</isConfirmationRequired>
+                <isIncludeInProgressIndicator>true</isIncludeInProgressIndicator>
+                <localDeveloperName>show_slide</localDeveloperName>
+                <masterLabel>Show Slide</masterLabel>
+                <progressIndicatorMessage>Loading the slide...</progressIndicatorMessage>
+            </localActions>
+            <localDeveloperName>slide_viewer</localDeveloperName>
+            <masterLabel>Slide Viewer</masterLabel>
+            <pluginType>Topic</pluginType>
+        </localTopics>
+        <masterLabel>HCP Knowledge Agent</masterLabel>
+        <plannerSurfaces>
+            <adaptiveResponseAllowed>true</adaptiveResponseAllowed>
+            <callRecordingAllowed>false</callRecordingAllowed>
+            <surface>SurfaceAction__CustomerWebClient</surface>
+            <surfaceType>CustomerWebClient</surfaceType>
+        </plannerSurfaces>
+        <plannerType>Atlas__ConcurrentMultiAgentOrchestration</plannerType>
+    </planner>
+    <smallTalkEnabled>false</smallTalkEnabled>
+    <staticPromptsEnabled>false</staticPromptsEnabled>
+    <status>Inactive</status>
+    <stopRecPrompts>false</stopRecPrompts>
+    <surfacesEnabled>false</surfacesEnabled>
+    <toneType>Casual</toneType>
+    <version>1</version>
+    <welcomeMessage>Hi! I&apos;m the Immunexis Knowledge Agent. Ask me about dosing, administration, efficacy, safety or patient support and I&apos;ll answer from the approved slides and show you the slide.</welcomeMessage>
+</AiAgentDefinitionVersion>

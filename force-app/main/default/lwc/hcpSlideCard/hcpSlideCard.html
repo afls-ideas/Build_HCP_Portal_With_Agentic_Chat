@@ -1,0 +1,22 @@
+<template>
+    <template lwc:if={hasSlide}>
+        <article class="slide-card">
+            <template lwc:if={hasThumbnail}>
+                <img src={thumbnailUrl} alt={slideName} class="thumbnail" />
+            </template>
+            <template lwc:else>
+                <div class="thumbnail-placeholder">No thumbnail available</div>
+            </template>
+            <div class="meta">
+                <h3 class="slide-name">{slideName}</h3>
+                <p class="slide-sub">
+                    <template lwc:if={presentationName}>{presentationName}</template>
+                    <template lwc:if={pageNumber}> &middot; Slide {pageNumber}</template>
+                </p>
+            </div>
+        </article>
+    </template>
+    <template lwc:else>
+        <div class="no-data">No slide available.</div>
+    </template>
+</template>
